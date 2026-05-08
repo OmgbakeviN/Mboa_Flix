@@ -1,0 +1,537 @@
+{
+  "top_movies": [
+    {
+      "id": "top_001",
+      "title": "Shadows of Douala",
+      "type": "Movie",
+      "category": "Mboa Movies",
+      "year": 2025,
+      "duration": "1h 48m",
+      "rating": 8.7,
+      "match": "98%",
+      "description": "A young coder returns to Douala and discovers that his brother is connected to a dangerous underground network.",
+      "tags": ["Drama", "Thriller", "Urban"],
+      "poster": "assets/movies/shadows_of_douala_poster.png",
+      "backdrop": "assets/movies/shadows_of_douala_backdrop.png",
+      "banner": "assets/movies/shadows_of_douala_banner.png",
+      "video": {
+        "local_path": "videos/shadows_of_douala.mp4",
+        "youtube_url": ""
+      }
+    },
+    {
+      "id": "top_002",
+      "title": "Kribi Nights",
+      "type": "Movie",
+      "category": "African Cinema",
+      "year": 2024,
+      "duration": "1h 36m",
+      "rating": 8.4,
+      "match": "95%",
+      "description": "A beach musician, a tourist guide and a missing bag of money cross paths during one unforgettable night in Kribi.",
+      "tags": ["Adventure", "Comedy", "Romance"],
+      "poster": "assets/movies/kribi_nights_poster.png",
+      "backdrop": "assets/movies/kribi_nights_backdrop.png",
+      "banner": "assets/movies/kribi_nights_banner.png",
+      "video": {
+        "local_path": "videos/kribi_nights.mp4",
+        "youtube_url": ""
+      }
+    },
+    {
+      "id": "top_003",
+      "title": "Campus Reloaded",
+      "type": "Series",
+      "category": "Mboa Series",
+      "year": 2025,
+      "duration": "8 Episodes",
+      "rating": 8.9,
+      "match": "99%",
+      "description": "A group of students at a tech school try to build a startup while surviving exams, love stories and campus drama.",
+      "tags": ["Series", "Youth", "Comedy"],
+      "poster": "assets/movies/campus_reloaded_poster.png",
+      "backdrop": "assets/movies/campus_reloaded_backdrop.png",
+      "banner": "assets/movies/campus_reloaded_banner.png",
+      "video": {
+        "local_path": "videos/campus_reloaded.mp4",
+        "youtube_url": ""
+      }
+    },
+    {
+      "id": "top_004",
+      "title": "The Last Bendskin",
+      "type": "Movie",
+      "category": "Mboa Movies",
+      "year": 2024,
+      "duration": "1h 42m",
+      "rating": 8.1,
+      "match": "92%",
+      "description": "A motorcycle taxi rider becomes a city hero after accidentally recording evidence of a major crime.",
+      "tags": ["Action", "Crime", "Street"],
+      "poster": "assets/movies/the_last_bendskin_poster.png",
+      "backdrop": "assets/movies/the_last_bendskin_backdrop.png",
+      "banner": "assets/movies/the_last_bendskin_banner.png",
+      "video": {
+        "local_path": "videos/the_last_bendskin.mp4",
+        "youtube_url": ""
+      }
+    },
+    {
+      "id": "top_005",
+      "title": "Market Queens",
+      "type": "Series",
+      "category": "Mboa Series",
+      "year": 2025,
+      "duration": "10 Episodes",
+      "rating": 8.6,
+      "match": "96%",
+      "description": "Three powerful women run the biggest market in the city while fighting betrayal, ambition and family secrets.",
+      "tags": ["Drama", "Business", "Family"],
+      "poster": "assets/movies/market_queens_poster.png",
+      "backdrop": "assets/movies/market_queens_backdrop.png",
+      "banner": "assets/movies/market_queens_banner.png",
+      "video": {
+        "local_path": "videos/market_queens.mp4",
+        "youtube_url": ""
+      }
+    },
+    {
+      "id": "top_006",
+      "title": "Lion's Code",
+      "type": "Movie",
+      "category": "African Cinema",
+      "year": 2025,
+      "duration": "1h 55m",
+      "rating": 9.0,
+      "match": "97%",
+      "description": "A cybersecurity student discovers a digital attack targeting several African cities and must stop it before midnight.",
+      "tags": ["Tech", "Action", "Suspense"],
+      "poster": "assets/movies/lions_code_poster.png",
+      "backdrop": "assets/movies/lions_code_backdrop.png",
+      "banner": "assets/movies/lions_code_banner.png",
+      "video": {
+        "local_path": "videos/lions_code.mp4",
+        "youtube_url": ""
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "mboa_movies",
+      "title": "Mboa Movies",
+      "movies": [
+        {
+          "id": "mboa_movie_001",
+          "title": "The Palm Wine Promise",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2023,
+          "duration": "1h 31m",
+          "rating": 7.8,
+          "match": "90%",
+          "description": "A family promise made in a village celebration changes the future of two childhood friends.",
+          "tags": ["Family", "Romance", "Village"],
+          "poster": "assets/movies/the_palm_wine_promise_poster.png",
+          "backdrop": "assets/movies/the_palm_wine_promise_backdrop.png",
+          "banner": "assets/movies/the_palm_wine_promise_banner.png",
+          "video": {
+            "local_path": "videos/the_palm_wine_promise.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_movie_002",
+          "title": "Red Dust Road",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2024,
+          "duration": "1h 44m",
+          "rating": 8.0,
+          "match": "91%",
+          "description": "A driver transporting mysterious cargo across the country realizes he is part of a bigger plan.",
+          "tags": ["Road", "Action", "Drama"],
+          "poster": "assets/movies/red_dust_road_poster.png",
+          "backdrop": "assets/movies/red_dust_road_backdrop.png",
+          "banner": "assets/movies/red_dust_road_banner.png",
+          "video": {
+            "local_path": "videos/red_dust_road.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_movie_003",
+          "title": "Ndolé for Two",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2025,
+          "duration": "1h 27m",
+          "rating": 7.6,
+          "match": "88%",
+          "description": "Two rival restaurant owners enter a cooking contest and accidentally fall in love.",
+          "tags": ["Comedy", "Food", "Romance"],
+          "poster": "assets/movies/ndole_for_two_poster.png",
+          "backdrop": "assets/movies/ndole_for_two_backdrop.png",
+          "banner": "assets/movies/ndole_for_two_banner.png",
+          "video": {
+            "local_path": "videos/ndole_for_two.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_movie_004",
+          "title": "Last Taxi to Bonabéri",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2024,
+          "duration": "1h 39m",
+          "rating": 8.2,
+          "match": "93%",
+          "description": "A taxi driver picks up his last passenger of the night and enters a dangerous mystery.",
+          "tags": ["Mystery", "Crime", "Night"],
+          "poster": "assets/movies/last_taxi_to_bonaberi_poster.png",
+          "backdrop": "assets/movies/last_taxi_to_bonaberi_backdrop.png",
+          "banner": "assets/movies/last_taxi_to_bonaberi_banner.png",
+          "video": {
+            "local_path": "videos/last_taxi_to_bonaberi.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_movie_005",
+          "title": "The Rainmaker of Buea",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2023,
+          "duration": "1h 52m",
+          "rating": 8.5,
+          "match": "94%",
+          "description": "A young scientist returns to Buea to save her community from a water crisis.",
+          "tags": ["Drama", "Science", "Community"],
+          "poster": "assets/movies/the_rainmaker_of_buea_poster.png",
+          "backdrop": "assets/movies/the_rainmaker_of_buea_backdrop.png",
+          "banner": "assets/movies/the_rainmaker_of_buea_banner.png",
+          "video": {
+            "local_path": "videos/the_rainmaker_of_buea.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_movie_006",
+          "title": "Lost in Mimboman",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2025,
+          "duration": "1h 25m",
+          "rating": 7.7,
+          "match": "89%",
+          "description": "A rich kid gets lost in a popular neighborhood and learns the real meaning of friendship.",
+          "tags": ["Comedy", "Urban", "Friendship"],
+          "poster": "assets/movies/lost_in_mimboman_poster.png",
+          "backdrop": "assets/movies/lost_in_mimboman_backdrop.png",
+          "banner": "assets/movies/lost_in_mimboman_banner.png",
+          "video": {
+            "local_path": "videos/lost_in_mimboman.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_movie_007",
+          "title": "The Wedding Committee",
+          "type": "Movie",
+          "category": "Mboa Movies",
+          "year": 2024,
+          "duration": "1h 34m",
+          "rating": 7.9,
+          "match": "90%",
+          "description": "Two families try to organize the perfect wedding, but every plan turns into chaos.",
+          "tags": ["Comedy", "Family", "Wedding"],
+          "poster": "assets/movies/the_wedding_committee_poster.png",
+          "backdrop": "assets/movies/the_wedding_committee_backdrop.png",
+          "banner": "assets/movies/the_wedding_committee_banner.png",
+          "video": {
+            "local_path": "videos/the_wedding_committee.mp4",
+            "youtube_url": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "mboa_series",
+      "title": "Mboa Series",
+      "movies": [
+        {
+          "id": "mboa_series_001",
+          "title": "Campus 237",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2025,
+          "duration": "12 Episodes",
+          "rating": 8.3,
+          "match": "94%",
+          "description": "Students from different backgrounds live the funniest and hardest year of their university life.",
+          "tags": ["Campus", "Comedy", "Youth"],
+          "poster": "assets/movies/campus_237_poster.png",
+          "backdrop": "assets/movies/campus_237_backdrop.png",
+          "banner": "assets/movies/campus_237_banner.png",
+          "video": {
+            "local_path": "videos/campus_237.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_series_002",
+          "title": "Makossa House",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2024,
+          "duration": "9 Episodes",
+          "rating": 8.0,
+          "match": "91%",
+          "description": "A music family tries to rebuild its old studio and revive the sound of a generation.",
+          "tags": ["Music", "Family", "Drama"],
+          "poster": "assets/movies/makossa_house_poster.png",
+          "backdrop": "assets/movies/makossa_house_backdrop.png",
+          "banner": "assets/movies/makossa_house_banner.png",
+          "video": {
+            "local_path": "videos/makossa_house.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_series_003",
+          "title": "Hustle Avenue",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2025,
+          "duration": "10 Episodes",
+          "rating": 8.4,
+          "match": "95%",
+          "description": "Young entrepreneurs chase money, respect and survival in a fast-moving city.",
+          "tags": ["Business", "Street", "Drama"],
+          "poster": "assets/movies/hustle_avenue_poster.png",
+          "backdrop": "assets/movies/hustle_avenue_backdrop.png",
+          "banner": "assets/movies/hustle_avenue_banner.png",
+          "video": {
+            "local_path": "videos/hustle_avenue.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_series_004",
+          "title": "Family Compound",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2023,
+          "duration": "8 Episodes",
+          "rating": 7.8,
+          "match": "88%",
+          "description": "A large family living in one compound turns everyday problems into hilarious battles.",
+          "tags": ["Family", "Comedy", "Lifestyle"],
+          "poster": "assets/movies/family_compound_poster.png",
+          "backdrop": "assets/movies/family_compound_backdrop.png",
+          "banner": "assets/movies/family_compound_banner.png",
+          "video": {
+            "local_path": "videos/family_compound.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_series_005",
+          "title": "The Interns",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2025,
+          "duration": "7 Episodes",
+          "rating": 8.1,
+          "match": "92%",
+          "description": "Five interns fight for one permanent job in a company full of secrets.",
+          "tags": ["Workplace", "Comedy", "Drama"],
+          "poster": "assets/movies/the_interns_poster.png",
+          "backdrop": "assets/movies/the_interns_backdrop.png",
+          "banner": "assets/movies/the_interns_banner.png",
+          "video": {
+            "local_path": "videos/the_interns.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_series_006",
+          "title": "Mboa Detectives",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2024,
+          "duration": "11 Episodes",
+          "rating": 8.6,
+          "match": "96%",
+          "description": "Two young investigators solve strange cases in different neighborhoods every week.",
+          "tags": ["Detective", "Mystery", "Crime"],
+          "poster": "assets/movies/mboa_detectives_poster.png",
+          "backdrop": "assets/movies/mboa_detectives_backdrop.png",
+          "banner": "assets/movies/mboa_detectives_banner.png",
+          "video": {
+            "local_path": "videos/mboa_detectives.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "mboa_series_007",
+          "title": "Neighbor Wars",
+          "type": "Series",
+          "category": "Mboa Series",
+          "year": 2023,
+          "duration": "10 Episodes",
+          "rating": 7.5,
+          "match": "87%",
+          "description": "Two neighboring families compete over everything, from parking spaces to family reputation.",
+          "tags": ["Comedy", "Family", "Neighborhood"],
+          "poster": "assets/movies/neighbor_wars_poster.png",
+          "backdrop": "assets/movies/neighbor_wars_backdrop.png",
+          "banner": "assets/movies/neighbor_wars_banner.png",
+          "video": {
+            "local_path": "videos/neighbor_wars.mp4",
+            "youtube_url": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "african_cinema",
+      "title": "African Cinema",
+      "movies": [
+        {
+          "id": "african_001",
+          "title": "Lagos After Dark",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2024,
+          "duration": "1h 50m",
+          "rating": 8.2,
+          "match": "93%",
+          "description": "A photographer enters the nightlife of Lagos and discovers a story that could change his career.",
+          "tags": ["Drama", "Nightlife", "Nigeria"],
+          "poster": "assets/movies/lagos_after_dark_poster.png",
+          "backdrop": "assets/movies/lagos_after_dark_backdrop.png",
+          "banner": "assets/movies/lagos_after_dark_banner.png",
+          "video": {
+            "local_path": "videos/lagos_after_dark.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "african_002",
+          "title": "Nairobi Skyline",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2025,
+          "duration": "1h 43m",
+          "rating": 8.1,
+          "match": "92%",
+          "description": "An architect risks everything to expose corruption behind a luxury building project.",
+          "tags": ["Thriller", "Kenya", "City"],
+          "poster": "assets/movies/nairobi_skyline_poster.png",
+          "backdrop": "assets/movies/nairobi_skyline_backdrop.png",
+          "banner": "assets/movies/nairobi_skyline_banner.png",
+          "video": {
+            "local_path": "videos/nairobi_skyline.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "african_003",
+          "title": "Accra Love Notes",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2023,
+          "duration": "1h 29m",
+          "rating": 7.9,
+          "match": "90%",
+          "description": "A radio host reads anonymous love letters on air and unknowingly changes her own life.",
+          "tags": ["Romance", "Ghana", "Music"],
+          "poster": "assets/movies/accra_love_notes_poster.png",
+          "backdrop": "assets/movies/accra_love_notes_backdrop.png",
+          "banner": "assets/movies/accra_love_notes_banner.png",
+          "video": {
+            "local_path": "videos/accra_love_notes.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "african_004",
+          "title": "Dakar Run",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2024,
+          "duration": "1h 38m",
+          "rating": 8.0,
+          "match": "91%",
+          "description": "A delivery rider in Dakar gets one impossible mission before sunrise.",
+          "tags": ["Action", "Senegal", "Adventure"],
+          "poster": "assets/movies/dakar_run_poster.png",
+          "backdrop": "assets/movies/dakar_run_backdrop.png",
+          "banner": "assets/movies/dakar_run_banner.png",
+          "video": {
+            "local_path": "videos/dakar_run.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "african_005",
+          "title": "Kigali Lights",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2025,
+          "duration": "1h 41m",
+          "rating": 8.3,
+          "match": "94%",
+          "description": "A young engineer designs a smart lighting project and fights to protect it from powerful rivals.",
+          "tags": ["Tech", "Rwanda", "Drama"],
+          "poster": "assets/movies/kigali_lights_poster.png",
+          "backdrop": "assets/movies/kigali_lights_backdrop.png",
+          "banner": "assets/movies/kigali_lights_banner.png",
+          "video": {
+            "local_path": "videos/kigali_lights.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "african_006",
+          "title": "Abidjan Heat",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2024,
+          "duration": "1h 46m",
+          "rating": 8.4,
+          "match": "95%",
+          "description": "A journalist follows a political scandal while trying to protect her family from danger.",
+          "tags": ["Thriller", "Ivory Coast", "Politics"],
+          "poster": "assets/movies/abidjan_heat_poster.png",
+          "backdrop": "assets/movies/abidjan_heat_backdrop.png",
+          "banner": "assets/movies/abidjan_heat_banner.png",
+          "video": {
+            "local_path": "videos/abidjan_heat.mp4",
+            "youtube_url": ""
+          }
+        },
+        {
+          "id": "african_007",
+          "title": "Cape Town Echoes",
+          "type": "Movie",
+          "category": "African Cinema",
+          "year": 2023,
+          "duration": "1h 35m",
+          "rating": 7.8,
+          "match": "89%",
+          "description": "A singer returns home and faces the painful past behind her most famous song.",
+          "tags": ["Music", "South Africa", "Drama"],
+          "poster": "assets/movies/cape_town_echoes_poster.png",
+          "backdrop": "assets/movies/cape_town_echoes_backdrop.png",
+          "banner": "assets/movies/cape_town_echoes_banner.png",
+          "video": {
+            "local_path": "videos/cape_town_echoes.mp4",
+            "youtube_url": ""
+          }
+        }
+      ]
+    }
+  ]
+}
