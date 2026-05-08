@@ -1,0 +1,295 @@
+Plan de travail sur 4 jours
+
+Jour 1 — Définir le concept et préparer les assets
+Objectif du jour
+
+Construire l’identité visuelle et préparer tout ce dont l’interface aura besoin.
+
+À faire
+
+Choisir le nom final
+
+Utilise par exemple :
+
+Mboa Flix
+
+C’est mieux que “Boa Lix”, parce que “Mboa” fait plus local, plus camerounais, plus mémorable.
+
+Définir le style visuel
+
+Choisis un style clair dès le début :
+
+fond sombre
+boutons rouges ou orange
+textes blancs
+cartes de films avec coins arrondis
+ambiance Netflix / Showmax / Canal+
+
+Préparer les images
+
+Il te faut au minimum :
+
+1 logo Mboa Flix
+1 bannière principale
+6 affiches de films
+1 image de fond
+1 icône play
+1 icône profil utilisateur
+
+Créer les faux contenus
+
+Prépare 6 faux films avec :
+
+titre
+catégorie
+durée
+année
+description courte
+image
+
+Exemple :
+
+Le Retour de Douala
+Yaoundé Nights
+Campus Secret
+Mboko Life
+Dernier Taxi
+La Cité Rouge
+
+Dessiner rapidement les écrans sur papier
+
+Pas besoin d’être parfait. Tu dois juste savoir où tu vas placer :
+
+le logo
+le menu
+les affiches
+les boutons
+les titres
+Résultat attendu du jour 1
+
+À la fin du jour 1, tu dois avoir :
+
+- Le nom final
+- Les couleurs
+- Les images
+- Les faux films
+- Le croquis des écrans
+Jour 2 — Construire la structure principale de l’interface
+Objectif du jour
+
+Créer les pages principales sans trop te concentrer sur les détails.
+
+Écrans à créer
+
+Écran de chargement
+
+Une petite intro avec :
+
+logo Mboa Flix
+texte “Chargement…”
+petite animation simple avec Turtle ou GIF
+
+Page d’accueil
+
+Elle doit contenir :
+
+logo en haut
+menu : Accueil, Films, Séries, Profil
+grande bannière principale
+bouton “Regarder”
+bouton “Détails”
+
+Page catalogue
+
+Elle doit afficher les films sous forme de cartes :
+
+image du film
+titre
+catégorie
+bouton détails
+
+Page détail
+
+Quand l’utilisateur clique sur un film, il voit :
+
+grande image du film
+titre
+description
+durée
+année
+bouton “Regarder maintenant”
+bouton “Retour”
+
+Faux lecteur vidéo
+
+Pas besoin de lire une vraie vidéo. Tu peux afficher :
+
+un grand écran noir
+le titre du film
+bouton play/pause
+barre de progression fictive
+bouton retour
+Résultat attendu du jour 2
+
+À la fin du jour 2, l’application doit déjà être navigable :
+
+Chargement → Accueil → Catalogue → Détails film → Lecteur
+
+Même si le design n’est pas encore parfait, la structure doit fonctionner.
+
+Jour 3 — Améliorer le design et ajouter les animations
+Objectif du jour
+
+Rendre l’application plus belle et plus professionnelle.
+
+À améliorer
+
+Design de la page d’accueil
+
+La page d’accueil doit être la plus impressionnante, parce que c’est la première chose qu’on verra.
+
+Ajoute :
+
+une grande bannière
+un film mis en avant
+une section “Populaires”
+une section “Nouveautés”
+des boutons bien visibles
+
+Design des cartes de films
+
+Chaque carte doit être propre :
+
+image bien dimensionnée
+titre lisible
+petit effet visuel au survol ou au clic
+bouton clair
+
+Animations simples
+
+Ajoute seulement des animations utiles :
+
+animation de chargement au début
+effet de transition entre les pages
+bouton qui change légèrement quand on clique
+petit loader avant d’ouvrir le faux lecteur
+
+Uniformiser les couleurs
+
+Ne change pas les couleurs partout. Garde une identité stable :
+
+Fond : noir / gris très foncé
+Texte : blanc
+Couleur principale : rouge, orange ou violet
+Couleur secondaire : gris clair
+
+Préparer un mode présentation
+
+L’application doit être facile à démontrer devant le coordinateur.
+
+Le parcours idéal :
+
+Lancer l’application
+Voir l’animation
+Arriver sur l’accueil
+Cliquer sur un film
+Voir les détails
+Cliquer sur regarder
+Voir le faux lecteur
+Revenir au catalogue
+Résultat attendu du jour 3
+
+À la fin du jour 3, l’application doit être présentable visuellement.
+
+Elle ne doit pas forcément être complète, mais elle doit donner l’impression d’une vraie plateforme.
+
+Jour 4 — Nettoyage, test et préparation de la livraison
+Objectif du jour
+
+Corriger les erreurs, organiser les fichiers et préparer la présentation.
+
+À faire
+
+Tester tous les boutons
+
+Vérifie que :
+
+le bouton Accueil marche
+le bouton Catalogue marche
+le bouton Détails marche
+le bouton Regarder marche
+le bouton Retour marche
+l’application ne crash pas
+
+Corriger les problèmes d’images
+
+Vérifie que :
+
+les images s’affichent bien
+les chemins sont corrects
+les images ne sont pas trop lourdes
+les dimensions sont propres
+
+Nettoyer l’interface
+
+Supprime :
+
+les boutons inutiles
+les textes temporaires
+les images mal placées
+les éléments qui cassent le design
+
+Préparer le dossier final
+
+Ton dossier doit être clair :
+
+mboa_flix/
+├── main.py
+├── assets/
+│   ├── logo.png
+│   ├── banner.png
+│   ├── film1.png
+│   ├── film2.png
+│   └── ...
+└── README.txt
+
+Préparer une mini-présentation orale
+
+Tu peux dire :
+
+J’ai créé une première version UI de Mboa Flix, une application de streaming desktop réalisée avec Tkinter et Turtle.
+L’objectif était de construire une interface moderne avec une page d’accueil, un catalogue, une page détail et un faux lecteur vidéo.
+J’ai choisi une structure avec des écrans et des boutons réels au lieu de gérer uniquement les clics par coordonnées, car c’est plus propre et plus facile à améliorer.
+
+Résultat attendu du jour 4
+
+À la fin du jour 4, tu dois avoir :
+
+- Une application qui s’ouvre sans erreur
+- Une interface propre
+- Une navigation complète
+- Des images bien affichées
+- Une petite animation
+- Un dossier bien organisé
+- Une explication claire pour la présentation
+Version finale à viser pour cette première livraison
+
+Ne vise pas trop grand. Vise ça :
+
+1. Splash screen animé
+2. Page d’accueil moderne
+3. Catalogue de 6 films
+4. Page détail d’un film
+5. Faux lecteur vidéo
+6. Boutons de navigation
+7. Design sombre style streaming
+
+C’est largement suffisant pour une première version UI.
+
+Priorité absolue
+
+Le plus important, ce n’est pas d’avoir 50 fonctionnalités.
+
+Le plus important, c’est que ton application donne cette impression :
+
+“On dirait déjà une vraie application de streaming.”
