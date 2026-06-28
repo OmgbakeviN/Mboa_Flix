@@ -5,12 +5,26 @@ from config import APP_NAME, ASSETS_DIR, COLORS
 
 
 class Navbar(tk.Frame):
-    def __init__(self, master, user=None, on_search=None, on_logout=None):
+    def __init__(
+        self,
+        master,
+        user=None,
+        on_search=None,
+        on_logout=None,
+        on_home=None,
+        on_food=None,
+        on_about=None,
+        active_page="home"
+    ):
         super().__init__(master, height=82, bg="#050505")
 
         self.user = user or {}
         self.on_search = on_search
         self.on_logout = on_logout
+        self.on_home = on_home
+        self.on_food = on_food
+        self.on_about = on_about
+        self.active_page = active_page
 
         self.accent_color = "#141414"
         self.gradient_photo = None
@@ -39,7 +53,7 @@ class Navbar(tk.Frame):
         else:
             self.logo_label = tk.Label(
                 self,
-                text=APP_NAME.upper(),
+                text=APP_NAME,
                 bg="#050505",
                 fg=COLORS["primary"],
                 font=("Arial", 15, "bold")
@@ -50,16 +64,27 @@ class Navbar(tk.Frame):
         self.links_frame = tk.Frame(self, bg="#050505")
         self.links_frame.place(x=175, y=29)
 
-        for text in ["Home", "Movies", "Series", "My Library"]:
+        links = [
+            ("Home", "home", self.on_home),
+            ("Movies", "movies", self.on_home),
+            ("Series", "series", self.on_home),
+            ("Food", "food", self.on_food),
+            ("About", "about", self.on_about),
+        ]
+
+        for text, key, command in links:
             label = tk.Label(
                 self.links_frame,
                 text=text,
                 bg="#050505",
-                fg=COLORS["text"] if text == "Home" else COLORS["muted"],
+                fg=COLORS["text"] if self.active_page == key else COLORS["muted"],
                 font=("Arial", 10, "bold"),
                 cursor="hand2"
             )
             label.pack(side="left", padx=(0, 24))
+
+            if callable(command):
+                label.bind("<Button-1>", lambda event, callback=command: callback())
 
         self.search_var = tk.StringVar()
 
@@ -79,43 +104,56 @@ class Navbar(tk.Frame):
             width=300,
             height=36
         )
-        self.search_entry.insert(0, "Search")
 
-        self.search_entry.bind("<FocusIn>", self._clear_placeholder)
-        self.search_entry.bind("<FocusOut>", self._restore_placeholder)
-        self.search_var.trace_add("write", self._schedule_search)
+        if callable(self.on_search):
+            self.search_entry.insert(0, "Search")
+            self.search_entry.bind("<FocusIn>", self._clear_placeholder)
+            self.search_entry.bind("<FocusOut>", self._restore_placeholder)
+            self.search_var.trace_add("write", self._schedule_search)
+        else:
+            self.search_entry.insert(0, "Search available on Home")
+            self.search_entry.config(state="disabled", disabledforeground="#777777")
 
-        email = self.user.get("email", "Guest")
+        display_name = self._get_display_name()
 
         self.user_label = tk.Label(
             self,
-            text=email,
+            text=display_name,
             bg="#050505",
             fg=COLORS["muted"],
             font=("Arial", 10, "bold")
         )
         self.user_label.place(relx=1.0, x=-240, y=30, anchor="nw")
 
-        self.logout_button = tk.Button(
-            self,
-            text="Logout",
-            command=self._handle_logout,
-            bg=COLORS["primary"],
-            fg=COLORS["text"],
-            activebackground=COLORS["primary_hover"],
-            activeforeground=COLORS["text"],
-            relief="flat",
-            bd=0,
-            cursor="hand2",
-            font=("Arial", 10, "bold")
-        )
-        self.logout_button.place(
-            relx=1.0,
-            x=-112,
-            y=22,
-            width=84,
-            height=36
-        )
+        if self.user and self.user.get("email"):
+            self.logout_button = tk.Button(
+                self,
+                text="Logout",
+                command=self._handle_logout,
+                bg=COLORS["primary"],
+                fg=COLORS["text"],
+                activebackground=COLORS["primary_hover"],
+                activeforeground=COLORS["text"],
+                relief="flat",
+                bd=0,
+                cursor="hand2",
+                font=("Arial", 10, "bold")
+            )
+            self.logout_button.place(
+                relx=1.0,
+                x=-112,
+                y=22,
+                width=84,
+                height=36
+            )
+
+    def _get_display_name(self):
+        email = self.user.get("email") if self.user else None
+
+        if not email:
+            return "Guest"
+
+        return email.split("@")[0]
 
     def _load_logo_photo(self):
         logo_path = ASSETS_DIR / "logo.png"

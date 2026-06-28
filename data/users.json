@@ -5,5 +5,12 @@
         "salt": "b2cedc77a891eb5302b011b876a080c7",
         "password_hash": "ada027ef87746a7366277f18a4d7dec7e2c04cb4672a895d64c2337a07f154db",
         "created_at": "2026-05-08T02:57:31.869158"
+    },
+    {
+        "id": "6470f0667ddcc0a7",
+        "email": "assiefack@gmail.com",
+        "salt": "9c6537b156cf43cfc710345abb2e213c",
+        "password_hash": "eb99cbb699034f3eb2ec5d68c99eaba3efd6591b786e4ae89f8ec2e83986fb85",
+        "created_at": "2026-05-08T06:45:06.251751"
     }
 ]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "food_001",
+    "name": "Ndolé",
+    "region": "Littoral / Cameroon",
+    "image": "assets/foods/ndole.png",
+    "short_description": "A famous Cameroonian dish made with bitter leaves, peanuts, spices, meat or fish.",
+    "description": "Ndolé is one of the most popular dishes in Cameroon. It is prepared with bitter leaves, groundnuts, spices and usually served with meat, fish or shrimps. This dish is often eaten during family events, celebrations and important gatherings. It represents the richness of Cameroonian cuisine and is especially loved in the Littoral region.",
+    "ingredients": ["Bitter leaves", "Groundnuts", "Beef", "Fish", "Shrimps", "Spices"],
+    "served_with": "Plantains, rice, miondo or bobolo"
+  },
+  {
+    "id": "food_002",
+    "name": "Poulet DG",
+    "region": "Urban Cameroon",
+    "image": "assets/foods/poulet_dg.png",
+    "short_description": "A festive dish with chicken, fried plantains, vegetables and rich spices.",
+    "description": "Poulet DG is a festive Cameroonian dish often associated with special guests and celebrations. The name DG means Directeur Général, because the dish was once considered a meal for important people. It is made with chicken, fried plantains, carrots, green beans, peppers and spices. Today, it is loved by many families and restaurants across Cameroon.",
+    "ingredients": ["Chicken", "Plantains", "Carrots", "Green beans", "Pepper", "Spices"],
+    "served_with": "Fried plantains and vegetables"
+  },
+  {
+    "id": "food_003",
+    "name": "Eru",
+    "region": "South West Cameroon",
+    "image": "assets/foods/eru.png",
+    "short_description": "A traditional meal made with eru leaves, waterleaf, palm oil, meat and fish.",
+    "description": "Eru is a traditional dish from the South West region of Cameroon. It is made with eru leaves, waterleaf, palm oil, meat, fish and sometimes cow skin. It is usually served with water fufu or garri. Eru is a strong cultural dish and is very popular during ceremonies, family meals and traditional events.",
+    "ingredients": ["Eru leaves", "Waterleaf", "Palm oil", "Meat", "Fish", "Cow skin"],
+    "served_with": "Water fufu or garri"
+  },
+  {
+    "id": "food_004",
+    "name": "Achu Soup",
+    "region": "North West Cameroon",
+    "image": "assets/foods/achu_soup.png",
+    "short_description": "A yellow soup served with pounded cocoyam, loved in the grassfields.",
+    "description": "Achu Soup is a traditional dish from the North West region of Cameroon. It is known for its yellow soup made with palm oil, limestone water, spices and meat. It is usually served with pounded cocoyam. Achu is more than food; it is a cultural symbol often eaten during important family and traditional occasions.",
+    "ingredients": ["Cocoyam", "Palm oil", "Limestone water", "Meat", "Spices"],
+    "served_with": "Pounded cocoyam"
+  },
+  {
+    "id": "food_005",
+    "name": "Koki",
+    "region": "West / Littoral Cameroon",
+    "image": "assets/foods/koki.png",
+    "short_description": "A steamed bean cake made with palm oil and usually eaten with ripe plantains.",
+    "description": "Koki is a delicious Cameroonian dish made from crushed beans mixed with red palm oil and spices. It is wrapped in leaves and steamed until firm. Koki has a soft texture and a rich taste. It is commonly eaten with ripe plantains and is popular in many regions of Cameroon.",
+    "ingredients": ["Koki beans", "Palm oil", "Pepper", "Salt", "Leaves"],
+    "served_with": "Ripe plantains"
+  },
+  {
+    "id": "food_006",
+    "name": "Roasted Fish",
+    "region": "Coastal Cameroon",
+    "image": "assets/foods/roasted_fish.png",
+    "short_description": "A street food classic served with miondo, plantains and pepper sauce.",
+    "description": "Roasted Fish is one of the most loved street foods in Cameroon, especially in coastal towns and big cities. The fish is seasoned, grilled and served with pepper sauce, onions, plantains or miondo. It is often eaten in open-air restaurants and represents the lively social food culture of Cameroon.",
+    "ingredients": ["Fresh fish", "Pepper", "Onions", "Spices", "Oil"],
+    "served_with": "Miondo, plantains or bobolo"
+  }
+]

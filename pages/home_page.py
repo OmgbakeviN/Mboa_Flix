@@ -2,8 +2,8 @@ import tkinter as tk
 from PIL import Image, ImageDraw, ImageTk
 
 from config import COLORS
-from components.hero_section import HeroSection
-from components.horizontal_movie_row import HorizontalMovieRow
+from components.auth_modal import AuthModal
+from components.movie_card import MovieCard
 from components.navbar import Navbar
 from services.movie_service import (
     get_featured_movie,
@@ -14,14 +14,26 @@ from services.movie_service import (
 
 
 class HomePage(tk.Frame):
-    def __init__(self, master, user=None, on_logout=None):
+    def __init__(
+        self,
+        master,
+        user=None,
+        selected_movie=None,
+        on_logout=None,
+        on_auth_success=None,
+        on_open_details=None,
+        on_watch=None
+    ):
         super().__init__(master, bg=COLORS["background"])
 
-        self.user = user or {}
+        self.user = user
         self.on_logout = on_logout
+        self.on_auth_success = on_auth_success
+        self.on_open_details = on_open_details
+        self.on_watch = on_watch
 
         self.catalog = load_catalog()
-        self.selected_movie = get_featured_movie(self.catalog)
+        self.selected_movie = selected_movie or get_featured_movie(self.catalog)
 
         self.hero_section = None
         self.content_widgets = []
@@ -29,6 +41,17 @@ class HomePage(tk.Frame):
         self.resize_after_id = None
         self.bg_item = None
         self.content_height = 700
+
+        self.auth_modal = None
+        self.pending_movie = None
+        self.pending_action = None
+
+        self.rows = []
+
+        self.card_width = 218
+        self.card_height = 142
+        self.card_total_height = 194
+        self.card_gap = 16
 
         self.pack(fill="both", expand=True)
 
@@ -78,7 +101,11 @@ class HomePage(tk.Frame):
             self,
             user=self.user,
             on_search=self._handle_search,
-            on_logout=self.on_logout
+            on_logout=self.on_logout,
+            on_home=getattr(self.master, "show_home_page", None),
+            on_food=getattr(self.master, "show_food_page", None),
+            on_about=getattr(self.master, "show_about_page", None),
+            active_page="home"
         )
         self.navbar.place(x=0, y=0, relwidth=1, height=82)
 
@@ -97,80 +124,35 @@ class HomePage(tk.Frame):
             widget.destroy()
 
         self.content_widgets.clear()
+        self.rows.clear()
+
         self.content_canvas.delete("content")
 
         width = max(self.content_canvas.winfo_width(), 900)
         usable_width = max(width - 110, 760)
 
         x = 50
-        y = 35
 
-        if self.selected_movie:
-            self.hero_section = HeroSection(
-                self.content_canvas,
-                movie=self.selected_movie,
-                on_watch=self._handle_watch,
-                on_details=self._handle_details
-            )
+        # We keep an empty visual space at the top so the movie background image can breathe.
+        # No black hero text box anymore.
+        y = 330
 
-            self.content_widgets.append(self.hero_section)
-
-            self.content_canvas.create_window(
-                x,
-                y,
-                window=self.hero_section,
-                anchor="nw",
-                width=590,
-                height=250,
-                tags="content"
-            )
-
-            y += 280
-
-        top_row = HorizontalMovieRow(
-            self.content_canvas,
+        y = self._create_movie_row(
             title="Top Movies",
             movies=self.catalog.get("top_movies", []),
-            on_movie_hover=self._select_movie,
-            on_movie_click=self._handle_details
+            x=x,
+            y=y,
+            usable_width=usable_width
         )
-
-        self.content_widgets.append(top_row)
-
-        self.content_canvas.create_window(
-            x,
-            y,
-            window=top_row,
-            anchor="nw",
-            width=usable_width,
-            height=245,
-            tags="content"
-        )
-
-        y += 270
 
         for category in self.catalog.get("categories", []):
-            row = HorizontalMovieRow(
-                self.content_canvas,
+            y = self._create_movie_row(
                 title=category.get("title", "Movies"),
                 movies=category.get("movies", []),
-                on_movie_hover=self._select_movie,
-                on_movie_click=self._handle_details
+                x=x,
+                y=y,
+                usable_width=usable_width
             )
-
-            self.content_widgets.append(row)
-
-            self.content_canvas.create_window(
-                x,
-                y,
-                window=row,
-                anchor="nw",
-                width=usable_width,
-                height=245,
-                tags="content"
-            )
-
-            y += 270
 
         if not self.catalog.get("top_movies") and not self.catalog.get("categories"):
             empty_label = tk.Label(
@@ -195,23 +177,155 @@ class HomePage(tk.Frame):
 
             y += 150
 
-        self.content_height = y + 60
+        self.content_height = y + 80
 
         self.content_canvas.configure(
             scrollregion=(0, 0, width, self.content_height)
         )
 
         self.content_canvas.tag_lower(self.bg_item)
+        self.content_canvas.tag_raise("content")
+
+    def _create_movie_row(self, title, movies, x, y, usable_width):
+        self.content_canvas.create_text(
+            x,
+            y,
+            text=title,
+            fill=COLORS["text"],
+            font=("Arial", 16, "bold"),
+            anchor="nw",
+            tags="content"
+        )
+
+        card_y = y + 42
+
+        row = {
+            "x": x,
+            "y": card_y,
+            "offset": 0,
+            "items": [],
+            "usable_width": usable_width,
+            "total_width": 0
+        }
+
+        if not movies:
+            empty_label = tk.Label(
+                self.content_canvas,
+                text="No movies found.",
+                bg="#050505",
+                fg=COLORS["muted"],
+                font=("Arial", 11)
+            )
+
+            self.content_widgets.append(empty_label)
+
+            item_id = self.content_canvas.create_window(
+                x,
+                card_y,
+                window=empty_label,
+                anchor="nw",
+                width=300,
+                height=70,
+                tags="content"
+            )
+
+            row["items"].append(item_id)
+            self.rows.append(row)
+
+            return y + 150
+
+        for index, movie in enumerate(movies):
+            card = MovieCard(
+                self.content_canvas,
+                movie=movie,
+                on_hover=self._select_movie,
+                on_click=self._handle_details,
+                width=self.card_width,
+                height=self.card_height
+            )
+
+            self.content_widgets.append(card)
+
+            card_x = x + index * (self.card_width + self.card_gap)
+
+            item_id = self.content_canvas.create_window(
+                card_x,
+                card_y,
+                window=card,
+                anchor="nw",
+                width=self.card_width,
+                height=self.card_total_height,
+                tags="content"
+            )
+
+            row["items"].append(item_id)
+
+            self._bind_card_horizontal_scroll(card, row)
+
+        total_width = len(movies) * (self.card_width + self.card_gap)
+        row["total_width"] = total_width
+        row["max_offset"] = max(0, total_width - usable_width)
+
+        self.rows.append(row)
+
+        return y + 255
+
+    def _bind_card_horizontal_scroll(self, widget, row):
+        widget.bind(
+            "<MouseWheel>",
+            lambda event, selected_row=row: self._on_row_mousewheel(event, selected_row)
+        )
+        widget.bind(
+            "<Button-4>",
+            lambda event, selected_row=row: self._on_row_mousewheel(event, selected_row)
+        )
+        widget.bind(
+            "<Button-5>",
+            lambda event, selected_row=row: self._on_row_mousewheel(event, selected_row)
+        )
+
+        for child in widget.winfo_children():
+            self._bind_card_horizontal_scroll(child, row)
+
+    def _on_row_mousewheel(self, event, row):
+        if row.get("max_offset", 0) <= 0:
+            return "break"
+
+        if getattr(event, "num", None) == 4:
+            delta = -90
+        elif getattr(event, "num", None) == 5:
+            delta = 90
+        else:
+            delta = int(-1 * (event.delta / 120)) * 90
+
+        row["offset"] = max(
+            0,
+            min(row["offset"] + delta, row["max_offset"])
+        )
+
+        self._update_row_positions(row)
+
+        return "break"
+
+    def _update_row_positions(self, row):
+        for index, item_id in enumerate(row["items"]):
+            card_x = (
+                row["x"]
+                + index * (self.card_width + self.card_gap)
+                - row["offset"]
+            )
+
+            self.content_canvas.coords(
+                item_id,
+                card_x,
+                row["y"]
+            )
 
     def _select_movie(self, movie):
         if not movie:
             return
 
         self.selected_movie = movie
-
-        if self.hero_section:
-            self.hero_section.set_movie(movie)
-
         self._render_background(movie)
 
     def _handle_search(self, query):
@@ -223,11 +337,58 @@ class HomePage(tk.Frame):
 
     def _handle_details(self, movie):
         self._select_movie(movie)
-        # Next step: connect MovieDetailsPage here.
+
+        if not self._is_authenticated():
+            self._open_auth_modal(movie, action="details")
+            return
+
+        if callable(self.on_open_details):
+            self.on_open_details(movie)
 
     def _handle_watch(self, movie):
         self._select_movie(movie)
-        # Later: connect PlayerPage here.
+
+        if not self._is_authenticated():
+            self._open_auth_modal(movie, action="watch")
+            return
+
+        if callable(self.on_watch):
+            self.on_watch(movie)
+
+    def _is_authenticated(self):
+        return bool(self.user and self.user.get("email"))
+
+    def _open_auth_modal(self, movie, action="details"):
+        self.pending_movie = movie
+        self.pending_action = action
+
+        if self.auth_modal:
+            self.auth_modal.destroy()
+
+        self.auth_modal = AuthModal(
+            self,
+            movie=movie,
+            initial_mode="sign_in",
+            on_success=self._handle_auth_success,
+            on_close=self._close_auth_modal
+        )
+
+    def _handle_auth_success(self, user):
+        if self.auth_modal:
+            self.auth_modal.destroy()
+            self.auth_modal = None
+
+        if callable(self.on_auth_success):
+            self.on_auth_success(
+                user,
+                self.pending_movie,
+                self.pending_action
+            )
+
+    def _close_auth_modal(self):
+        self.auth_modal = None
+        self.pending_movie = None
+        self.pending_action = None
 
     def _handle_resize(self, _event=None):
         if self.resize_after_id:
@@ -253,15 +414,25 @@ class HomePage(tk.Frame):
                 "units"
             )
 
+        self._keep_background_fixed()
+
         return "break"
+
+    def _keep_background_fixed(self):
+        top_y = self.content_canvas.canvasy(0)
+
+        self.content_canvas.coords(
+            self.bg_item,
+            0,
+            top_y
+        )
+
+        self.content_canvas.tag_lower(self.bg_item)
+        self.content_canvas.tag_raise("content")
 
     def _render_background(self, movie):
         width = max(self.content_canvas.winfo_width(), 900)
-        height = max(
-            self.content_canvas.winfo_height(),
-            self.content_height,
-            580
-        )
+        height = max(self.content_canvas.winfo_height(), 580)
 
         image = self._load_background_image(movie, width, height)
         accent = self._dominant_color(image)
@@ -274,7 +445,8 @@ class HomePage(tk.Frame):
             self.bg_item,
             image=self.background_photo
         )
-        self.content_canvas.tag_lower(self.bg_item)
+
+        self._keep_background_fixed()
 
         if hasattr(self, "navbar") and self.navbar:
             self.navbar.set_accent_color(
@@ -355,7 +527,7 @@ class HomePage(tk.Frame):
         black_overlay = Image.new(
             "RGBA",
             image.size,
-            (0, 0, 0, 135)
+            (0, 0, 0, 125)
         )
         image = Image.alpha_composite(image, black_overlay)
 
@@ -368,7 +540,7 @@ class HomePage(tk.Frame):
         gradient_height = min(280, height)
 
         for y in range(gradient_height):
-            alpha = int(170 * (1 - y / gradient_height))
+            alpha = int(175 * (1 - y / gradient_height))
 
             top_draw.line(
                 (0, y, width, y),
@@ -381,18 +553,36 @@ class HomePage(tk.Frame):
             (0, 0, 0, 0)
         )
         left_draw = ImageDraw.Draw(left_gradient)
-        gradient_width = min(620, width)
+        gradient_width = min(680, width)
 
         for x in range(gradient_width):
-            alpha = int(220 * (1 - x / gradient_width))
+            alpha = int(230 * (1 - x / gradient_width))
 
             left_draw.line(
                 (x, 0, x, height),
                 fill=(0, 0, 0, alpha)
             )
 
+        bottom_gradient = Image.new(
+            "RGBA",
+            image.size,
+            (0, 0, 0, 0)
+        )
+        bottom_draw = ImageDraw.Draw(bottom_gradient)
+        gradient_height = min(260, height)
+
+        for y in range(height - gradient_height, height):
+            ratio = (y - (height - gradient_height)) / gradient_height
+            alpha = int(185 * ratio)
+
+            bottom_draw.line(
+                (0, y, width, y),
+                fill=(0, 0, 0, alpha)
+            )
+
         image = Image.alpha_composite(image, top_gradient)
         image = Image.alpha_composite(image, left_gradient)
+        image = Image.alpha_composite(image, bottom_gradient)
 
         return image.convert("RGB")
 
